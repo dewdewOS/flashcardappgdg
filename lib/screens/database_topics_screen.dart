@@ -1,20 +1,20 @@
+// lib/screens/databases_topics_screen.dart
 import 'package:flutter/material.dart';
 import '../widgets/gradient_background.dart';
 import 'flashcard_screen.dart';
 
-class DSATopicsScreen extends StatelessWidget {
-  const DSATopicsScreen({super.key});
+class DatabasesTopicsScreen extends StatelessWidget {
+  const DatabasesTopicsScreen({super.key});
 
   final topics = const [
-    "Arrays",
-    "Linked List",
-    "Stacks",
-    "Queues",
-    "Trees",
-    "Graphs",
-    "Hashing",
-    "Recursion",
-    "Dynamic Programming",
+    "Relational Databases",
+    "SQL Queries",
+    "Normalization",
+    "Transactions",
+    "Indexes",
+    "NoSQL Databases",
+    "Stored Procedures",
+    "Triggers",
   ];
 
   @override
@@ -24,7 +24,7 @@ class DSATopicsScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: const Text("DSA Topics"),
+          title: const Text("Databases"),
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),

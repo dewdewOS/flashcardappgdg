@@ -1,20 +1,20 @@
+// lib/screens/se_topics_screen.dart
 import 'package:flutter/material.dart';
 import '../widgets/gradient_background.dart';
 import 'flashcard_screen.dart';
 
-class DSATopicsScreen extends StatelessWidget {
-  const DSATopicsScreen({super.key});
+class SETopicsScreen extends StatelessWidget {
+  const SETopicsScreen({super.key});
 
   final topics = const [
-    "Arrays",
-    "Linked List",
-    "Stacks",
-    "Queues",
-    "Trees",
-    "Graphs",
-    "Hashing",
-    "Recursion",
-    "Dynamic Programming",
+    "Software Development Life Cycle",
+    "Agile Methodologies",
+    "Requirements Analysis",
+    "Design Patterns",
+    "Testing & QA",
+    "Version Control",
+    "Project Management",
+    "Documentation",
   ];
 
   @override
@@ -24,7 +24,7 @@ class DSATopicsScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: const Text("DSA Topics"),
+          title: const Text("Software Engineering"),
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),

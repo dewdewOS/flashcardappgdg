@@ -1,20 +1,20 @@
+// lib/screens/ml_topics_screen.dart
 import 'package:flutter/material.dart';
 import '../widgets/gradient_background.dart';
 import 'flashcard_screen.dart';
 
-class DSATopicsScreen extends StatelessWidget {
-  const DSATopicsScreen({super.key});
+class MLTopicsScreen extends StatelessWidget {
+  const MLTopicsScreen({super.key});
 
   final topics = const [
-    "Arrays",
-    "Linked List",
-    "Stacks",
-    "Queues",
-    "Trees",
-    "Graphs",
-    "Hashing",
-    "Recursion",
-    "Dynamic Programming",
+    "Supervised Learning",
+    "Unsupervised Learning",
+    "Regression",
+    "Classification",
+    "Clustering",
+    "Neural Networks",
+    "Model Evaluation",
+    "Feature Engineering",
   ];
 
   @override
@@ -24,7 +24,7 @@ class DSATopicsScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: const Text("DSA Topics"),
+          title: const Text("Machine Learning"),
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),

@@ -1,20 +1,20 @@
+// lib/screens/architecture_topics_screen.dart
 import 'package:flutter/material.dart';
 import '../widgets/gradient_background.dart';
 import 'flashcard_screen.dart';
 
-class DSATopicsScreen extends StatelessWidget {
-  const DSATopicsScreen({super.key});
+class ArchitectureTopicsScreen extends StatelessWidget {
+  const ArchitectureTopicsScreen({super.key});
 
   final topics = const [
-    "Arrays",
-    "Linked List",
-    "Stacks",
-    "Queues",
-    "Trees",
-    "Graphs",
-    "Hashing",
-    "Recursion",
-    "Dynamic Programming",
+    "CPU Organization",
+    "Memory Hierarchy",
+    "Pipelining",
+    "Cache Memory",
+    "Instruction Set Architecture",
+    "Input/Output Systems",
+    "ALU Design",
+    "Microarchitecture",
   ];
 
   @override
@@ -24,7 +24,7 @@ class DSATopicsScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: const Text("DSA Topics"),
+          title: const Text("Computer Architecture"),
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),

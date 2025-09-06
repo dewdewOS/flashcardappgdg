@@ -1,6 +1,15 @@
-import 'package:flashcardappgdg/screens/dsa_topics_screen.dart';
 import 'package:flutter/material.dart';
-import 'flashcard_screen.dart'; // 👈 import your flashcard screen
+import '../widgets/gradient_background.dart';
+import 'dsa_topics_screen.dart';
+import 'algorithms_topics_screen.dart';
+import 'os_topics_screen.dart';
+import 'networking_topics_screen.dart';
+import 'database_topics_screen.dart';
+import 'ml_topics_screen.dart';
+import 'ai_topics_screen.dart';
+import 'architecture_topics_screen.dart';
+import 'cybersecurity_topics_screen.dart';
+import 'se_topics_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final VoidCallback onToggleTheme;
@@ -14,12 +23,12 @@ class HomeScreen extends StatelessWidget {
 
     final gradientColors = theme.brightness == Brightness.light
         ? [
-            Color(0xFFFDE2E4),
-            Color(0xFFFAD2E1),
-            Color(0xFFD7E3FC),
-            Color(0xFFE2ECE9),
+            const Color(0xFFFDE2E4),
+            const Color(0xFFFAD2E1),
+            const Color(0xFFD7E3FC),
+            const Color(0xFFE2ECE9),
           ]
-        : [Color(0xFF3E1E68), Color(0xFF2A0E4C), Color(0xFF0D0D0D)];
+        : const [Color(0xFF3E1E68), Color(0xFF2A0E4C), Color(0xFF0D0D0D)];
 
     final elementColor = Colors.white.withOpacity(0.2);
 
@@ -53,7 +62,7 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: onToggleTheme,
-            icon: const Icon(Icons.brightness_6, color: Colors.white),
+            icon: Icon(Icons.brightness_6, color: Colors.white),
           ),
         ],
       ),
@@ -136,15 +145,12 @@ class HomeScreen extends StatelessWidget {
 
                     return GestureDetector(
                       onTap: () {
-                        if (subject == "Data Structures") {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => const DSATopicsScreen(),
-                            ),
-                          );
-                        }
-                        // later: add navigation for other subjects
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => _getTopicScreen(subject),
+                          ),
+                        );
                       },
                       child: Container(
                         width: boxSize,
@@ -176,8 +182,12 @@ class HomeScreen extends StatelessWidget {
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: theme.colorScheme.surface.withOpacity(0.9),
-        selectedItemColor: const Color.fromARGB(255, 7, 7, 7),
-        unselectedItemColor: const Color.fromARGB(179, 31, 31, 31),
+        selectedItemColor: theme.brightness == Brightness.dark
+            ? Colors.white
+            : Colors.black,
+        unselectedItemColor: theme.brightness == Brightness.dark
+            ? Colors.white70
+            : Colors.black54,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
@@ -188,5 +198,33 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  // Map subjects to their topic screens
+  Widget _getTopicScreen(String subject) {
+    switch (subject) {
+      case 'Data Structures':
+        return const DSATopicsScreen();
+      case 'Algorithms':
+        return const AlgorithmsTopicsScreen();
+      case 'Operating Systems':
+        return const OSTopicsScreen();
+      case 'Networking':
+        return const NetworkingTopicsScreen();
+      case 'Databases':
+        return const DatabasesTopicsScreen();
+      case 'Machine Learning':
+        return const MLTopicsScreen();
+      case 'Artificial Intelligence':
+        return const AITopicsScreen();
+      case 'Computer Architecture':
+        return const ArchitectureTopicsScreen();
+      case 'Cybersecurity':
+        return const CybersecurityTopicsScreen();
+      case 'Software Engineering':
+        return const SETopicsScreen();
+      default:
+        return const DSATopicsScreen();
+    }
   }
 }

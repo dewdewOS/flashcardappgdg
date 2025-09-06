@@ -1,20 +1,19 @@
+// lib/screens/os_topics_screen.dart
 import 'package:flutter/material.dart';
 import '../widgets/gradient_background.dart';
 import 'flashcard_screen.dart';
 
-class DSATopicsScreen extends StatelessWidget {
-  const DSATopicsScreen({super.key});
+class OSTopicsScreen extends StatelessWidget {
+  const OSTopicsScreen({super.key});
 
   final topics = const [
-    "Arrays",
-    "Linked List",
-    "Stacks",
-    "Queues",
-    "Trees",
-    "Graphs",
-    "Hashing",
-    "Recursion",
-    "Dynamic Programming",
+    "Processes & Threads",
+    "Scheduling Algorithms",
+    "Memory Management",
+    "Virtual Memory",
+    "File Systems",
+    "Synchronization",
+    "Deadlocks",
   ];
 
   @override
@@ -24,7 +23,7 @@ class DSATopicsScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: const Text("DSA Topics"),
+          title: const Text("Operating Systems"),
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),

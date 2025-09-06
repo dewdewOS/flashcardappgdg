@@ -1,20 +1,20 @@
+// lib/screens/cybersecurity_topics_screen.dart
 import 'package:flutter/material.dart';
 import '../widgets/gradient_background.dart';
 import 'flashcard_screen.dart';
 
-class DSATopicsScreen extends StatelessWidget {
-  const DSATopicsScreen({super.key});
+class CybersecurityTopicsScreen extends StatelessWidget {
+  const CybersecurityTopicsScreen({super.key});
 
   final topics = const [
-    "Arrays",
-    "Linked List",
-    "Stacks",
-    "Queues",
-    "Trees",
-    "Graphs",
-    "Hashing",
-    "Recursion",
-    "Dynamic Programming",
+    "Cryptography",
+    "Network Security",
+    "Authentication",
+    "Authorization",
+    "Vulnerabilities",
+    "Penetration Testing",
+    "Firewalls & IDS",
+    "Security Policies",
   ];
 
   @override
@@ -24,7 +24,7 @@ class DSATopicsScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: const Text("DSA Topics"),
+          title: const Text("Cybersecurity"),
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),

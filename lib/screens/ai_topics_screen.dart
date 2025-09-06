@@ -1,20 +1,20 @@
+// lib/screens/ai_topics_screen.dart
 import 'package:flutter/material.dart';
 import '../widgets/gradient_background.dart';
 import 'flashcard_screen.dart';
 
-class DSATopicsScreen extends StatelessWidget {
-  const DSATopicsScreen({super.key});
+class AITopicsScreen extends StatelessWidget {
+  const AITopicsScreen({super.key});
 
   final topics = const [
-    "Arrays",
-    "Linked List",
-    "Stacks",
-    "Queues",
-    "Trees",
-    "Graphs",
-    "Hashing",
-    "Recursion",
-    "Dynamic Programming",
+    "Search Algorithms",
+    "Knowledge Representation",
+    "Expert Systems",
+    "Planning",
+    "Reasoning",
+    "Natural Language Processing",
+    "Computer Vision",
+    "Robotics",
   ];
 
   @override
@@ -24,7 +24,7 @@ class DSATopicsScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: const Text("DSA Topics"),
+          title: const Text("Artificial Intelligence"),
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),
