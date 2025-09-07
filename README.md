@@ -16,4 +16,7 @@ I have been going through paths of signing another API key/ syncing questions da
 - Menu on the right with Profile, Settings and Help page
 - Feature to toggle between light and dark mode
 
+<img width="413" height="1200" alt="image" src="https://github.com/user-attachments/assets/df33b8bd-b0d8-464c-abd9-b8caa2fdd284" />
+<img width="413" height="1200" alt="image" src="https://github.com/user-attachments/assets/31891f16-9297-4355-bc00-d11838c8f975" />
+<img width="413" height="1200" alt="image" src="https://github.com/user-attachments/assets/15dba61f-2486-4ed1-a6f1-9e64471586de" />
 
