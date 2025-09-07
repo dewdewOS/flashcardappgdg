@@ -20,3 +20,28 @@ I have been going through paths of signing another API key/ syncing questions da
 <img width="413" height="1200" alt="image" src="https://github.com/user-attachments/assets/31891f16-9297-4355-bc00-d11838c8f975" />
 <img width="413" height="1200" alt="image" src="https://github.com/user-attachments/assets/15dba61f-2486-4ed1-a6f1-9e64471586de" />
 
+
+
+TASK PROGRESS :
+
+
+Level 1: Basic Flashcards
+● Create a simple flashcards screen.      [DONE]
+● A user should be able to add new cards (with a question and answer).    [NOT IMPLEMENTED]
+● The user can view all cards and tap a card to flip it between question and
+answer.   [DONE]
+(Doesn’t have to be pixel-perfect just a working UI with some functionality.)
+Level 2: Navigation & Progress
+● Support multiple flashcards and allow navigation (Next/Prev buttons or swipe
+left/right).    [DONE]
+● Show the current card number (like “3 of 10”).    [DONE]
+● Add support for images on flashcards (e.g., a flashcard can contain a picture
+along with text).    [NOT IMPLEMENTED]
+● Add a feature to mark a card as “learned”, so it no longer appears in the
+review list.    [NOT IMPLEMENTED]
+Level 3: Categories & Persistence
+● Add categories (like Math, Science, History). The user should be able to pick
+a category and only see those flashcards.      [DONE]
+● Save flashcards and progress in local storage/database, so data is not lost
+when the app closes.      [NOT IMPLEMENTED]
+● Add dark mode and feature to toggle modes.    [DONE]
