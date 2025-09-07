@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/gradient_background.dart';
+
+// Topic screens
 import 'dsa_topics_screen.dart';
 import 'algorithms_topics_screen.dart';
 import 'os_topics_screen.dart';
@@ -11,10 +13,37 @@ import 'architecture_topics_screen.dart';
 import 'cybersecurity_topics_screen.dart';
 import 'se_topics_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+// Main section screens
+import 'courses_screen.dart';
+import 'explore_screen.dart';
+import 'profile_screen.dart';
+import 'settings_screen.dart';
+import 'help_screen.dart';
+
+class HomeScreen extends StatefulWidget {
   final VoidCallback onToggleTheme;
 
   const HomeScreen({Key? key, required this.onToggleTheme}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+
+  final subjects = [
+    'Data Structures',
+    'Algorithms',
+    'Operating Systems',
+    'Networking',
+    'Databases',
+    'Machine Learning',
+    'Artificial Intelligence',
+    'Computer Architecture',
+    'Cybersecurity',
+    'Software Engineering',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -31,23 +60,28 @@ class HomeScreen extends StatelessWidget {
         : const [Color(0xFF3E1E68), Color(0xFF2A0E4C), Color(0xFF0D0D0D)];
 
     final elementColor = Colors.white.withOpacity(0.2);
-
     final subjectTextColor = theme.brightness == Brightness.light
         ? Colors.black87
         : Colors.white;
 
-    final subjects = [
-      'Data Structures',
-      'Algorithms',
-      'Operating Systems',
-      'Networking',
-      'Databases',
-      'Machine Learning',
-      'Artificial Intelligence',
-      'Computer Architecture',
-      'Cybersecurity',
-      'Software Engineering',
-    ];
+    // Decide body based on bottom nav
+    Widget body;
+    switch (_selectedIndex) {
+      case 1:
+        body = const CoursesScreen();
+        break;
+      case 2:
+        body = const ExploreScreen();
+        break;
+      default:
+        body = _buildHomeContent(
+          theme,
+          screenWidth,
+          gradientColors,
+          elementColor,
+          subjectTextColor,
+        );
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -61,8 +95,13 @@ class HomeScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: onToggleTheme,
-            icon: Icon(Icons.brightness_6, color: Colors.white),
+            onPressed: widget.onToggleTheme,
+            icon: Icon(
+              theme.brightness == Brightness.dark
+                  ? Icons.dark_mode
+                  : Icons.light_mode,
+              color: Colors.white,
+            ),
           ),
         ],
       ),
@@ -78,109 +117,60 @@ class HomeScreen extends StatelessWidget {
                   end: Alignment.bottomRight,
                 ),
               ),
-              child: const Text(
-                'Menu',
-                style: TextStyle(color: Colors.white, fontSize: 24),
+              child: const Align(
+                alignment: Alignment.bottomLeft,
+                child: Text(
+                  'Menu',
+                  style: TextStyle(color: Colors.white, fontSize: 24),
+                ),
               ),
             ),
             ListTile(
               leading: const Icon(Icons.person),
               title: const Text('Profile'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const ProfileScreen()),
+                );
+              },
             ),
             ListTile(
               leading: const Icon(Icons.settings),
               title: const Text('Settings'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => SettingsScreen(
+                      onToggleTheme: widget.onToggleTheme,
+                      isDark: theme.brightness == Brightness.dark,
+                    ),
+                  ),
+                );
+              },
             ),
             ListTile(
               leading: const Icon(Icons.help),
               title: const Text('Help'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const HelpScreen()),
+                );
+              },
             ),
           ],
         ),
       ),
       extendBodyBehindAppBar: true,
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: gradientColors,
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-        child: Column(
-          children: [
-            const SizedBox(height: 80),
-            // Progress Tracker Circle
-            Center(
-              child: Container(
-                width: screenWidth * 0.4,
-                height: screenWidth * 0.4,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: elementColor,
-                ),
-                child: Center(
-                  child: Text(
-                    '3/10',
-                    style: theme.textTheme.headlineMedium?.copyWith(
-                      color: subjectTextColor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Wrap(
-                  spacing: 16,
-                  runSpacing: 16,
-                  children: subjects.map((subject) {
-                    final boxSize = (screenWidth - 48) / 2;
-
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => _getTopicScreen(subject),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        width: boxSize,
-                        height: boxSize,
-                        decoration: BoxDecoration(
-                          color: elementColor,
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: Center(
-                          child: Text(
-                            subject,
-                            textAlign: TextAlign.center,
-                            style: theme.textTheme.titleMedium?.copyWith(
-                              color: subjectTextColor,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'DMSerifText',
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      body: GradientBackground(child: body),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: (index) => setState(() => _selectedIndex = index),
         backgroundColor: theme.colorScheme.surface.withOpacity(0.9),
         selectedItemColor: theme.brightness == Brightness.dark
             ? Colors.white
@@ -197,6 +187,84 @@ class HomeScreen extends StatelessWidget {
           BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Explore'),
         ],
       ),
+    );
+  }
+
+  Widget _buildHomeContent(
+    ThemeData theme,
+    double screenWidth,
+    List<Color> gradientColors,
+    Color elementColor,
+    Color subjectTextColor,
+  ) {
+    return Column(
+      children: [
+        const SizedBox(height: 80),
+        // Progress Tracker Circle
+        Center(
+          child: Container(
+            width: screenWidth * 0.4,
+            height: screenWidth * 0.4,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: elementColor,
+            ),
+            child: Center(
+              child: Text(
+                '3/10',
+                style: theme.textTheme.headlineMedium?.copyWith(
+                  color: subjectTextColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 20),
+        Expanded(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Wrap(
+              spacing: 16,
+              runSpacing: 16,
+              children: subjects.map((subject) {
+                final boxSize = (screenWidth - 48) / 2;
+
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => _getTopicScreen(subject),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: boxSize,
+                    height: boxSize,
+                    decoration: BoxDecoration(
+                      color: elementColor,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Center(
+                      child: Text(
+                        subject,
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          color: subjectTextColor,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'DMSerifText',
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+        ),
+      ],
     );
   }
 

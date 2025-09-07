@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:dart_openai/dart_openai.dart';
+
+// Screens
 import 'screens/home_screen.dart';
+import 'screens/courses_screen.dart';
+import 'screens/explore_screen.dart';
+import 'screens/profile_screen.dart';
+import 'screens/settings_screen.dart';
+import 'screens/help_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Load .env (Flutter mobile automatically finds it in project root)
+  // Load .env
   await dotenv.load();
 
   final apiKey = dotenv.env['OPENAI_API_KEY'];
@@ -44,7 +51,16 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       themeMode: _isDark ? ThemeMode.dark : ThemeMode.light,
-      home: HomeScreen(onToggleTheme: _toggleTheme),
+      // Define routes for navigation
+      routes: {
+        '/': (context) => HomeScreen(onToggleTheme: _toggleTheme),
+        '/courses': (context) => const CoursesScreen(),
+        '/explore': (context) => const ExploreScreen(),
+        '/profile': (context) => const ProfileScreen(),
+        '/settings': (context) =>
+            SettingsScreen(onToggleTheme: _toggleTheme, isDark: _isDark),
+        '/help': (context) => const HelpScreen(),
+      },
     );
   }
 }
